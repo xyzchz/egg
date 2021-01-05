@@ -9,20 +9,19 @@ class UserService extends Service {
 
   async patchUser(data) {
     const { userId, userName, age, sex } = data
-    const user = await this.app.mysql.query(`update user set
-      userName=${userName},
-      age=${age},
-      sex=${sex}
+    const result = await this.app.mysql.query(`update user set
+      userName='${userName}',
+      age='${age}',
+      sex='${sex}'
       where
       userId=${userId}
     `);
+    const updateSuccess = result.affectedRows === 1
+    if (!updateSuccess) return { errorMesaage: '服务器错误' }
+    const user = await this.app.mysql.get('user', { userId });
     return user;
   }
 
-  async find(uid) {
-    const user = await this.ctx.db.query('select * from user where uid = ?', uid);
-    return user;
-  }
 }
 
 module.exports = UserService;

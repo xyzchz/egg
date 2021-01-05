@@ -35,7 +35,7 @@ module.exports = appInfo => {
       // 密码
       password: 'cheng321',
       // 数据库名
-      database: 'test',
+      database: 'umi3',
     },
     // 是否加载到 app 上，默认开启
     app: true,
@@ -45,7 +45,7 @@ module.exports = appInfo => {
 
   config.security= {
     csrf: {
-      headerName: 'token',// 自定义请求头
+      enable: false
     }
  }
 

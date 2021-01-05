@@ -11,6 +11,7 @@ class UserController extends Controller {
 
   async patchUser() {
     const { ctx } = this
+    const data = ctx.request.body
     const user = await ctx.service.user.patchUser(data)
     ctx.body = user;
   }
