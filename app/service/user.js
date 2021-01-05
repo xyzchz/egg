@@ -7,6 +7,18 @@ class UserService extends Service {
     return user;
   }
 
+  async patchUser(data) {
+    const { userId, userName, age, sex } = data
+    const user = await this.app.mysql.query(`update user set
+      userName=${userName},
+      age=${age},
+      sex=${sex}
+      where
+      userId=${userId}
+    `);
+    return user;
+  }
+
   async find(uid) {
     const user = await this.ctx.db.query('select * from user where uid = ?', uid);
     return user;
