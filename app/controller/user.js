@@ -15,6 +15,13 @@ class UserController extends Controller {
     const user = await ctx.service.user.patchUser(data)
     ctx.body = user;
   }
+
+  async addUser() {
+    const { ctx } = this
+    const data = ctx.request.body
+    const user = await ctx.service.user.addUser(data)
+    ctx.body = user;
+  }
 }
 
 module.exports = UserController;

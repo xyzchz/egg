@@ -22,6 +22,16 @@ class UserService extends Service {
     return user;
   }
 
+  async addUser(data) {
+    const { userId, userName, age, sex } = data
+    const result = await this.app.mysql.query(`INSERT INTO user (userName, age, sex) VALUES ('${userName}', '${age}', '${sex}')`);
+    const updateSuccess = result.affectedRows === 1
+    return result
+    // if (!updateSuccess) return { errorMesaage: '服务器错误' }
+    // const user = await this.app.mysql.get('user', { userId });
+    // return user;
+  }
+
 }
 
 module.exports = UserService;
