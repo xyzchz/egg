@@ -22,6 +22,13 @@ class UserController extends Controller {
     const user = await ctx.service.user.addUser(data)
     ctx.body = user;
   }
+
+  async errorTest() {
+    const { ctx } = this
+    // const user = await ctx.service.user.addUser(data)
+    ctx.status = 401
+    ctx.body = { message: 'error' }
+  }
 }
 
 module.exports = UserController;

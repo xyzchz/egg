@@ -6,7 +6,8 @@
 module.exports = app => {
   const { router, controller } = app;
   router.get('/', controller.home.index);
-  router.get('/user', controller.user.getUsers);
-  router.patch('/user', controller.user.patchUser);
-  router.post('/user', controller.user.addUser);
+  router.get('/v1/user', controller.user.getUsers);
+  router.patch('/v1/user', controller.user.patchUser);
+  router.post('/v1/user', controller.user.addUser);
+  router.get('/v1/errorTest', controller.user.errorTest);
 };
