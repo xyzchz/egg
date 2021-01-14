@@ -1,10 +1,12 @@
 'use strict';
+const { throwError } = require('../public/utils')
 
 const Controller = require('egg').Controller;
 
 class UserController extends Controller {
   async getUsers() {
     const { ctx } = this;
+    if(!throwError(ctx)) return
     const users = await ctx.service.user.getUsers()
     ctx.body = users;
   }
