@@ -9,5 +9,6 @@ module.exports = app => {
   router.get('/v1/user', controller.user.getUsers);
   router.patch('/v1/user', controller.user.patchUser);
   router.post('/v1/user', controller.user.addUser);
+  router.post('/v1/uploadFile', controller.upload.uploadFile);
   router.get('/v1/errorTest', controller.user.errorTest);
 };

@@ -49,6 +49,16 @@ module.exports = appInfo => {
     }
  }
 
+  config.multipart = {
+    mode: 'file',
+    whitelist: [
+      ".txt",
+      ".pdf",
+      ".docx",
+      ".excel"
+    ]
+  };
+
   return {
     ...config,
     ...userConfig,

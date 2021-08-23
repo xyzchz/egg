@@ -8,12 +8,12 @@ class UserService extends Service {
       limit: Number(limit),
       offset: Number(offset)
     })
-    const total = await this.app.mysql.query(`SELECT count(*) FROM user`)
+    const total = await this.app.mysql.count('user')
     return {
       items: user,
       pageInfo: {
         pageSize: Number(limit),
-        total: total[0]['count(*)'],
+        total: total,
         page: (offset) / limit + 1
       }
     };
